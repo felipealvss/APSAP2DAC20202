@@ -18,13 +18,12 @@ public class MusicalInstrumentDAO {
 	}
 	
 	// List all the registers on the Database - SELECT * ...
+	@SuppressWarnings("unchecked")
 	public static List<MusicalInstrument> selectAllMusicalInstrument() {
 		EntityManager em = JPAUtil.createEntityManager();
 		Query query = em.createQuery("select mi from MusicalInstrument mi");
-		@SuppressWarnings("unchecked")
-		List<MusicalInstrument> movieList = query.getResultList();
-		em.close();
-		return movieList;
+		List<MusicalInstrument> list = query.getResultList();
+		return list;
 	}
 	
 	// List a register by Id - SELECT ... WHERE ...
@@ -54,4 +53,14 @@ public class MusicalInstrumentDAO {
 		em.close();
 	}
 	
+	// Count the quantity of registers on the Database
+	@SuppressWarnings("unchecked")
+	public static List<MusicalInstrument> countMusicalInstrument() {
+		EntityManager em = JPAUtil.createEntityManager();
+		em.getTransaction().begin();
+		Query query = em.createQuery("select count(mi) from MusicalInstrument mi");
+		List<MusicalInstrument> count = query.getResultList();
+		em.close();
+		return count;
+	}
 }

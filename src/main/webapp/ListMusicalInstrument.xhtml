@@ -1,0 +1,54 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<html xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:composite="http://java.sun.com/jsf/composite"
+	xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+	<title>APS/AP2 DAC PROJECT</title>
+</h:head>
+
+<h:body>
+
+	<p:panel header="SAVED MUSICAL INSTRUMENTS">
+	
+		<h:form>
+		
+			<p:commandLink value="Return to Main Page" action="Index.xhtml"/>
+			<br /><br />
+			
+			<p:dataTable var="mi" value="#{musicalInstrumentBean.musicalInstrumentList}">
+				
+				<p:column headerText="Id">
+					<f:facet name="Id"></f:facet>
+					<h:outputLabel value="#{mi.id}"/>
+				</p:column>
+				
+				<p:column headerText="Name">
+					<f:facet name="Name"></f:facet>
+					<h:outputLabel value="#{mi.name}"/>
+				</p:column>
+				
+				<p:column headerText="Instrument Age">
+					<f:facet name="InstrumentAge"></f:facet>
+					<h:outputLabel value="#{mi.instrumentAge}"/>
+				</p:column>
+				
+				<p:column headerText="Owner">
+					<f:facet name="Owner"></f:facet>
+					<h:outputLabel value="#{mi.owner}"/>
+				</p:column>
+				
+			</p:dataTable>
+	
+		</h:form>	
+	
+	</p:panel>
+
+</h:body>
+
+</html>
