@@ -5,28 +5,32 @@
 	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
 	xmlns:h="http://xmlns.jcp.org/jsf/html"
 	xmlns:f="http://xmlns.jcp.org/jsf/core"
-	xmlns:composite="http://java.sun.com/jsf/composite"
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>APS/AP2 DAC PROJECT</title>
+	<title>LIST - APS/AP2 DAC PROJECT</title>
 </h:head>
 
 <h:body>
 
-	<p:panel header="MUSICAL INSTRUMENTS REGISTRATION">
+	<p:panel header="MUSICAL INSTRUMENTS - EDIT INFORMATIONS">
 	
 		<h:form>
 			
 			<p:commandButton value="Registers Count" action="#{musicalInstrumentBean.countMusicalInstrument}" style="margin-right:20px;"/>
 			<br /> <br />
 			
+			<p:commandLink value="Return to Main Page" action="Index.xhtml" style="margin-right:20px;"/>
+			<br /> <br />
+			
 		    <p:messages id="messages" showDetail="true" closable="true">
         		<p:autoUpdate />
     		</p:messages>
 			
+			<h:inputHidden value="#{musicalInstrumentBean.musicalInstrument.id}" />
+			
 			<p:panelGrid columns="2" cellpadding="5">
-				
+			
 				<p:outputLabel value="Name: " style="font-weight:bold" />
 				<p:inputText value="#{musicalInstrumentBean.musicalInstrument.name}"/>
 				
@@ -36,15 +40,15 @@
 				<p:outputLabel value="Owner: " style="font-weight:bold" />
 				<p:inputText value="#{musicalInstrumentBean.musicalInstrument.owner}"/>
 				
-				<p:commandButton value="Save Register" style="margin-right:20px;" action="#{musicalInstrumentBean.saveMusicalInstrument}"/>
+				<p:commandButton value="Save Edits" action="#{musicalInstrumentBean.editMusicalInstrument}"/>
 				<p:commandButton value="View Saved Registers" action="#{musicalInstrumentBean.listMusicalInstrument}"/>
 				
 			</p:panelGrid>
-	
-		</h:form>	
-	
+			
+		</h:form>
+		
 	</p:panel>
-
+	
 </h:body>
 
 </html>

@@ -9,7 +9,7 @@
 	xmlns:p="http://primefaces.org/ui">
 
 <h:head>
-	<title>APS/AP2 DAC PROJECT</title>
+	<title>LIST - APS/AP2 DAC PROJECT</title>
 </h:head>
 
 <h:body>
@@ -17,30 +17,51 @@
 	<p:panel header="SAVED MUSICAL INSTRUMENTS">
 	
 		<h:form>
-		
-			<p:commandLink value="Return to Main Page" action="Index.xhtml"/>
+			
+			<p:commandButton value="Registers Count" action="#{musicalInstrumentBean.countMusicalInstrument}" style="margin-right:20px;"/>
+			<br /> <br />
+			
+			<p:commandLink value="Return to Main Page" action="Index.xhtml" style="margin-right:20px;"/>
 			<br /><br />
+			
+		    <p:messages id="messages" showDetail="true" closable="true">
+        		<p:autoUpdate />
+    		</p:messages>
 			
 			<p:dataTable var="mi" value="#{musicalInstrumentBean.musicalInstrumentList}">
 				
 				<p:column headerText="Id">
-					<f:facet name="Id"></f:facet>
-					<h:outputLabel value="#{mi.id}"/>
+					<f:facet name="Id"/>
+					<p:outputLabel value="#{mi.id}"/>
 				</p:column>
 				
 				<p:column headerText="Name">
-					<f:facet name="Name"></f:facet>
-					<h:outputLabel value="#{mi.name}"/>
+					<f:facet name="Name"/>
+					<p:outputLabel value="#{mi.name}"/>
 				</p:column>
 				
 				<p:column headerText="Instrument Age">
-					<f:facet name="InstrumentAge"></f:facet>
-					<h:outputLabel value="#{mi.instrumentAge}"/>
+					<f:facet name="InstrumentAge"/>
+					<p:outputLabel value="#{mi.instrumentAge}"/>
 				</p:column>
 				
 				<p:column headerText="Owner">
-					<f:facet name="Owner"></f:facet>
-					<h:outputLabel value="#{mi.owner}"/>
+					<f:facet name="Owner"/>
+					<p:outputLabel value="#{mi.owner}"/>
+				</p:column>
+				
+				<p:column headerText="Edit">
+					<f:facet name="Edit"/>
+					<p:commandLink value="Edit Info." action="EditMusicalInstrument.xhtml">
+						<f:setPropertyActionListener value="#{mi}" target="#{musicalInstrumentBean.musicalInstrument}" />
+					</p:commandLink>
+				</p:column>
+				
+				<p:column headerText="Delete">
+					<f:facet name="Delete"/>
+					<p:commandLink value="Delete Info." action="#{musicalInstrumentBean.deleteMusicalInstrument}">
+						<f:setPropertyActionListener value="#{mi}" target="#{musicalInstrumentBean.musicalInstrument}" />
+					</p:commandLink>
 				</p:column>
 				
 			</p:dataTable>

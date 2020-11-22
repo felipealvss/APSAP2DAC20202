@@ -8,7 +8,7 @@ import util.JPAUtil;
 
 public class MusicalInstrumentDAO {
 
-	// Save registers on Database - INSERT INTO ...
+	// Save registers on Database - CREATE ...
 	public static void insertMusicaInstrument(MusicalInstrument mi) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
@@ -17,7 +17,7 @@ public class MusicalInstrumentDAO {
 		em.close();
 	}
 	
-	// List all the registers on the Database - SELECT * ...
+	// List all the registers on the Database - READ ...
 	@SuppressWarnings("unchecked")
 	public static List<MusicalInstrument> selectAllMusicalInstrument() {
 		EntityManager em = JPAUtil.createEntityManager();
@@ -26,15 +26,7 @@ public class MusicalInstrumentDAO {
 		return list;
 	}
 	
-	// List a register by Id - SELECT ... WHERE ...
-	public static MusicalInstrument selectMusicalInstrumentById(Integer miId) {
-		EntityManager em = JPAUtil.createEntityManager();
-		MusicalInstrument mi = em.find(MusicalInstrument.class, miId);
-		em.close();
-		return mi;
-	}
-	
-	// Modify registers that is already on the Database - ALTER TABLE ...
+	// Modify registers that is already on the Database - UPDATE ...
 	public static void updateMusicalInstrumentById(MusicalInstrument mi) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
@@ -43,7 +35,7 @@ public class MusicalInstrumentDAO {
 		em.close();
 	}
 	
-	// Delete register from the Database by Id - DELETE ... WHERE ...
+	// Delete register from the Database by Id - DELETE ... 
 	public static void deleteMusicalInstrumentById(MusicalInstrument mi) {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
@@ -55,12 +47,22 @@ public class MusicalInstrumentDAO {
 	
 	// Count the quantity of registers on the Database
 	@SuppressWarnings("unchecked")
-	public static List<MusicalInstrument> countMusicalInstrument() {
+	public static Integer countMusicalInstrument() {
 		EntityManager em = JPAUtil.createEntityManager();
 		em.getTransaction().begin();
-		Query query = em.createQuery("select count(mi) from MusicalInstrument mi");
-		List<MusicalInstrument> count = query.getResultList();
+		Query query = em.createQuery("select mi from MusicalInstrument mi");
+		List<MusicalInstrument> result = query.getResultList();
+		int countList = result.size();
 		em.close();
-		return count;
+		return countList;
 	}
+	
+	// List a register by Id - READ ...
+	public static MusicalInstrument selectMusicalInstrumentById(Integer miId) {
+		EntityManager em = JPAUtil.createEntityManager();
+		MusicalInstrument mi = em.find(MusicalInstrument.class, miId);
+		em.close();
+		return mi;
+	}
+	
 }
