@@ -52,14 +52,16 @@
 				
 				<p:column headerText="Edit">
 					<f:facet name="Edit"/>
-					<p:commandLink value="Edit Info." action="EditMusicalInstrument.xhtml">
+					<p:commandLink action="EditMusicalInstrument.xhtml">
+						<p:graphicImage value="icons8-edit-file-24.png"/>
 						<f:setPropertyActionListener value="#{mi}" target="#{musicalInstrumentBean.musicalInstrument}" />
 					</p:commandLink>
 				</p:column>
 				
 				<p:column headerText="Delete">
 					<f:facet name="Delete"/>
-					<p:commandLink value="Delete Info." action="#{musicalInstrumentBean.deleteMusicalInstrument}">
+					<p:commandLink action="#{musicalInstrumentBean.deleteMusicalInstrument}">
+						<p:graphicImage value="icons8-delete-file-24.png"/>
 						<f:setPropertyActionListener value="#{mi}" target="#{musicalInstrumentBean.musicalInstrument}" />
 					</p:commandLink>
 				</p:column>
